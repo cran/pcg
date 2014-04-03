@@ -3,8 +3,9 @@ function(A,b,M,maxiter=1e5,tol=1e-6)
 {
 if (missing(M)) 
 {
-diag(A)[which(diag(A)==0)]=1e-4
-Minv=diag(1/diag(A),nrow=nrow(A)) 
+dA<-diag(A)
+dA[which(dA==0)]=1e-4
+Minv=diag(1/dA,nrow=nrow(A)) 
 } else Minv=solve(M)
 x=rep(0,length(b))
 r=b-A%*%x
